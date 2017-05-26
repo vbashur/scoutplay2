@@ -12,6 +12,7 @@ import reactivemongo.play.json.collection.JSONCollection
 import play.modules.reactivemongo.json._
 
 
+
 import scala.concurrent.{ExecutionContext, Future}
 
 class AdRepositoryImpl @Inject()(reactiveMongoApi: ReactiveMongoApi) extends AdRepository {
