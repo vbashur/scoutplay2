@@ -1,9 +1,16 @@
 package controllers
 
+import javax.inject.Inject
+
 import play.api.mvc.Controller
+import play.modules.reactivemongo.{MongoController, ReactiveMongoApi, ReactiveMongoComponents}
+import repositories.AdRepositoryImpl
 
 
-class AdController extends Controller {
+class AdController @Inject()(val reactiveMongoApi: ReactiveMongoApi) extends Controller
+  with MongoController with ReactiveMongoComponents {
+
+  def adRepository = new AdRepositoryImpl(reactiveMongoApi)
 
   def index = TODO
 
