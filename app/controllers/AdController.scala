@@ -21,7 +21,7 @@ class AdController @Inject()(val reactiveMongoApi: ReactiveMongoApi) extends Con
   }
 
   def get(id: String) = Action.async { implicit request =>
-    adRepository.get(BSONDocument(Advertisement.field_Id -> BSONString(id))).map(adv => Ok(Json.toJson(adv)))
+    adRepository.get(BSONDocument(Advertisement.field_Id -> BSONObjectID.parse(id).get)).map(adv => Ok(Json.toJson(adv)))
   }
 
   def add = Action.async(BodyParsers.parse.json) { implicit request =>
@@ -48,7 +48,7 @@ class AdController @Inject()(val reactiveMongoApi: ReactiveMongoApi) extends Con
     val isNew = (request.body \  Advertisement.field_New).as[Boolean]
     val price = (request.body \  Advertisement.field_Price).as[Long]
     val registration = (request.body \  Advertisement.field_Reg).as[String]
-    adRepository.update(BSONDocument(Advertisement.field_Id -> BSONString(id)),
+    adRepository.update(BSONDocument(Advertisement.field_Id -> BSONObjectID.parse(id).get),
       BSONDocument("$set" -> BSONDocument(
         Advertisement.field_Title -> title,
         Advertisement.field_Fuel -> fuelType,
@@ -60,7 +60,6 @@ class AdController @Inject()(val reactiveMongoApi: ReactiveMongoApi) extends Con
       .map(result => Accepted)
   }
 
-  def delete(id: String) = adRepository.remove(BSONDocument(Advertisement.field_Id -> BSONString(id)))
-    .map(result => Accepted);
+  def delete(id: String) = TODO
 
 }

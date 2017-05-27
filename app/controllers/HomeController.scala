@@ -41,9 +41,9 @@ class HomeController @Inject()(val reactiveMongoApi: ReactiveMongoApi) extends C
 
     Logger.info("Application startup...")
 
-    val newAudiAvantA4 = NewCarAd(java.lang.Long.valueOf(1), "Audi A4 Avant", LPG, java.lang.Long.valueOf(30000))
-    val usedBmwTouring5 = NewCarAd(java.lang.Long.valueOf(2), "BMW 530d Touring", Diesel, java.lang.Long.valueOf(49000))
-    val usedVWPassatCC = UsedCarAd(java.lang.Long.valueOf(3), "VW Passat CC", Gasoline,
+    val newAudiAvantA4 = NewCarAd("Audi A4 Avant", LPG, java.lang.Long.valueOf(30000))
+    val usedBmwTouring5 = NewCarAd("BMW 530d Touring", Diesel, java.lang.Long.valueOf(49000))
+    val usedVWPassatCC = UsedCarAd("VW Passat CC", Gasoline,
       java.lang.Long.valueOf(22500), java.lang.Long.valueOf(8900), Some(DateTime.now().minusYears(2)))
 
     val posts = List(

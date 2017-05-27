@@ -11,6 +11,7 @@ libraryDependencies += filters
 libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "2.0.0" % Test
 libraryDependencies += "org.reactivemongo" % "play2-reactivemongo_2.11" % "0.12.3"
 
+
 // Adds additional packages into Twirl
 //TwirlKeys.templateImports += "vbashur.controllers._"
 
