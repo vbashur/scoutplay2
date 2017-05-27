@@ -8,6 +8,7 @@ lazy val root = (project in file(".")).enablePlugins(PlayScala)
 scalaVersion := "2.11.11"
 
 libraryDependencies += filters
+libraryDependencies += specs2 % Test
 libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "2.0.0" % Test
 libraryDependencies += "org.reactivemongo" % "play2-reactivemongo_2.11" % "0.12.3"
 

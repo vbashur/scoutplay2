@@ -46,7 +46,7 @@ class HomeController @Inject()(val reactiveMongoApi: ReactiveMongoApi) extends C
     val usedVWPassatCC = UsedCarAd("VW Passat CC", Gasoline,
       java.lang.Long.valueOf(22500), java.lang.Long.valueOf(8900), Some(DateTime.now().minusYears(2)))
 
-    val posts = List(
+    val ads = List(
       newAudiAvantA4.toJsonObj,
       usedBmwTouring5.toJsonObj,
       usedVWPassatCC.toJsonObj
@@ -57,7 +57,7 @@ class HomeController @Inject()(val reactiveMongoApi: ReactiveMongoApi) extends C
     result.map { res =>
       val numberOfDocs: Int = res.value
       if(numberOfDocs < 1) {
-        adsCollection.bulkInsert(posts.toStream, true).foreach(i => Logger.info("Record added."))
+        adsCollection.bulkInsert(ads.toStream, true).foreach(i => Logger.info("Record added."))
       }
     }
     Ok("Ads database is ready.")
