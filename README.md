@@ -47,6 +47,10 @@ Update existing ad with the given id - - correct model represented in JSON forma
 ```
 PATCH      /api/ads/:id
 ```
+Delete existing ad with the given id
+```
+DELETE      /api/ads/:id
+```
 
 ### Launching application
 

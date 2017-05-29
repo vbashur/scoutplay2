@@ -97,4 +97,18 @@ class AdApplicationSpec extends Specification with Results with Mockito  {
     }
   }
 
+  "Ads#remove" should {
+    "remove ad" in {
+
+      val writeResult = new DefaultWriteResult(true, 0, Nil, None, None, None)
+      mockAdRepository.remove(any[BSONDocument])(any[ExecutionContext]) returns Future(writeResult)
+
+      val request = FakeRequest()
+      val result: Future[Result] = testAdController.delete(id).apply(request)
+
+      status(result) must be equalTo ACCEPTED
+      there was one(mockAdRepository).remove(any[BSONDocument])(any[ExecutionContext])
+    }
+  }
+
 }

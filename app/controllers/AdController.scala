@@ -60,6 +60,10 @@ class AdController @Inject()(val reactiveMongoApi: ReactiveMongoApi) extends Con
       .map(result => Accepted)
   }
 
-  def delete(id: String) = TODO
+  def delete(id: String) = Action.async {
+    adRepository.remove(BSONDocument(Advertisement.field_Id -> BSONObjectID.parse(id).get))
+      .map(result => Accepted)
+  }
+
 
 }
